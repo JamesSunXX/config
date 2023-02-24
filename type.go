@@ -72,6 +72,10 @@ func (c *Config) Bool(section string, option string) (value bool, err error) {
 	return value, nil
 }
 
+func (c *Config) GetBool(section string, option string) (value bool, err error) {
+	return c.Bool(section, option)
+}
+
 // Float has the same behaviour as String but converts the response to float.
 func (c *Config) Float(section string, option string) (value float64, err error) {
 	sv, err := c.String(section, option)
@@ -152,4 +156,8 @@ func (c *Config) String(section string, option string) (value string, err error)
 	})
 	value = *computedVal
 	return value, err
+}
+
+func (c *Config) GetString(section string, option string) (value string, err error) {
+	return c.String(section, option)
 }
