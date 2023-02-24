@@ -83,10 +83,10 @@ func (c *Config) Float(section string, option string) (value float64, err error)
 }
 
 // Int has the same behaviour as String but converts the response to int.
-func (c *Config) Int(section string, option string) (value int, err error) {
+func (c *Config) Int(section string, option string) (value int64, err error) {
 	sv, err := c.String(section, option)
 	if err == nil {
-		value, err = strconv.Atoi(sv)
+		value, err = strconv.ParseInt(sv, 10, 64)
 	}
 
 	return value, err
